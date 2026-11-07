@@ -154,7 +154,8 @@
       </button>
 
       <div class="top-right">
-        <div class="panel counter" id="counter">MAIL 0/0</div>
+        <div class="panel counter" id="counter">ROUND 0/0</div>
+        <div class="panel timer hidden" id="timer" aria-live="polite">TIME 10</div>
         <button class="panel quit-btn" id="quitBtn">QUIT</button>
       </div>
 
@@ -193,14 +194,23 @@
       <div id="titleScreen" class="overlay">
         <div class="card">
           <h2 class="big-title">INBOX<br /><span>INTERN</span></h2>
-          <p>Don't get phished. Don't get fired.</p>
+          <p>Don't get phished. Don't get fired.<br />Choose your shift:</p>
+          <div class="mode-options">
+            <button id="normalBtn" class="mode-btn">
+              <span class="mode-name">NORMAL MODE</span>
+              <span class="mode-rules">7 emails · $500 start · No timer<br />6 Normal + 1 Hard (last)</span>
+            </button>
+            <button id="hardBtn" class="mode-btn">
+              <span class="mode-name">HARD MODE</span>
+              <span class="mode-rules">10 Hard emails · $300 start<br />10-second timer per email</span>
+            </button>
+          </div>
           <ul class="howto">
             <li>📩 Click the INBOX when new mail arrives</li>
             <li>📖 Read it, then click the text box</li>
             <li>✅ TRUST real emails, 🚩 REPORT phishing</li>
             <li>💸 Below $0 = you're fired!</li>
           </ul>
-          <button id="startBtn" class="big-btn">▶ PRESS START</button>
         </div>
       </div>
 
