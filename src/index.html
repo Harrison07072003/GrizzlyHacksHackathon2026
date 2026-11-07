@@ -1,3 +1,227 @@
-<html>
-<h1></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbox Intern</title>
+  <!-- Pixel fonts (falls back to monospace if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="console">
+    <!-- ===== Handheld top bezel ===== -->
+    <header class="console-top">
+      <span class="led" title="power"></span>
+      <h1 class="logo">INBOX <span>INTERN</span></h1>
+      <div class="speaker"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </header>
+
+    <!-- ===== Game screen ===== -->
+    <main class="screen" id="screen">
+
+      <!-- Pixel-art office scene (96x60 pixel grid) -->
+      <svg class="scene" id="scene" viewBox="0 0 96 60" preserveAspectRatio="xMidYMid slice" shape-rendering="crispEdges" aria-hidden="true">
+        <!-- wall + stripes -->
+        <rect x="0" y="0" width="96" height="40" fill="#ffe3b3" />
+        <g fill="#fbd69a">
+          <rect x="4" y="0" width="3" height="40" /><rect x="16" y="0" width="3" height="40" />
+          <rect x="28" y="0" width="3" height="40" /><rect x="40" y="0" width="3" height="40" />
+          <rect x="52" y="0" width="3" height="40" /><rect x="64" y="0" width="3" height="40" />
+          <rect x="76" y="0" width="3" height="40" /><rect x="88" y="0" width="3" height="40" />
+        </g>
+        <!-- floor -->
+        <rect x="0" y="40" width="96" height="20" fill="#c98b5b" />
+        <rect x="0" y="39" width="96" height="2" fill="#8a5a3b" />
+        <rect x="0" y="47" width="96" height="1" fill="#b57a4c" />
+        <rect x="0" y="54" width="96" height="1" fill="#b57a4c" />
+
+        <!-- window -->
+        <rect x="7" y="5" width="22" height="18" fill="#6b4a33" />
+        <rect x="8" y="6" width="20" height="16" fill="#a8e1ff" />
+        <rect x="10" y="9" width="7" height="2" fill="#fff" /><rect x="11" y="8" width="4" height="1" fill="#fff" />
+        <rect x="20" y="15" width="5" height="2" fill="#fff" />
+        <rect x="17" y="6" width="2" height="16" fill="#6b4a33" />
+        <rect x="8" y="13" width="20" height="2" fill="#6b4a33" />
+        <rect x="6" y="23" width="24" height="2" fill="#8a5a3b" />
+
+        <!-- "profits" poster -->
+        <rect x="69" y="5" width="18" height="15" fill="#6b4a33" />
+        <rect x="70" y="6" width="16" height="13" fill="#fffdf6" />
+        <rect x="72" y="14" width="2" height="3" fill="#5bd18b" />
+        <rect x="75" y="12" width="2" height="5" fill="#5bd18b" />
+        <rect x="78" y="10" width="2" height="7" fill="#5bd18b" />
+        <rect x="81" y="8" width="2" height="9" fill="#5bd18b" />
+        <rect x="72" y="17" width="12" height="1" fill="#2b2140" />
+
+        <!-- plant -->
+        <g>
+          <rect x="84" y="30" width="3" height="6" fill="#4caf50" />
+          <rect x="81" y="32" width="4" height="3" fill="#66c96b" />
+          <rect x="87" y="31" width="4" height="3" fill="#66c96b" />
+          <rect x="83" y="28" width="5" height="3" fill="#7fdc84" />
+          <rect x="81" y="36" width="9" height="8" fill="#e0703f" />
+          <rect x="80" y="36" width="11" height="2" fill="#c45a2c" />
+        </g>
+
+        <!-- chair back -->
+        <rect x="36" y="15" width="24" height="25" fill="#ef5d7a" />
+        <rect x="36" y="15" width="24" height="2" fill="#ff8aa1" />
+        <rect x="58" y="15" width="2" height="25" fill="#c9425f" />
+
+        <!-- intern -->
+        <g class="intern" id="intern">
+          <!-- body -->
+          <rect x="39" y="24" width="18" height="11" fill="#5b8cff" />
+          <rect x="47" y="24" width="2" height="7" fill="#ffd23f" />
+          <rect x="46" y="23" width="4" height="1" fill="#f2b88c" />
+          <!-- head -->
+          <rect x="41" y="11" width="14" height="12" fill="#ffd0a8" />
+          <rect x="41" y="9" width="14" height="4" fill="#3b2a20" />
+          <rect x="40" y="10" width="2" height="6" fill="#3b2a20" />
+          <rect x="54" y="10" width="2" height="6" fill="#3b2a20" />
+          <rect x="44" y="12" width="5" height="2" fill="#3b2a20" />
+          <!-- face -->
+          <g class="eyes">
+            <rect x="44" y="16" width="2" height="2" fill="#2b2140" />
+            <rect x="50" y="16" width="2" height="2" fill="#2b2140" />
+          </g>
+          <rect x="43" y="19" width="2" height="1" fill="#ff9aa8" />
+          <rect x="51" y="19" width="2" height="1" fill="#ff9aa8" />
+          <rect class="mouth" x="47" y="20" width="2" height="1" fill="#2b2140" />
+          <!-- screen glow on face -->
+          <rect class="glow" x="41" y="15" width="14" height="8" fill="#9fe7ff" />
+          <!-- sweat drop (shown on wrong answers) -->
+          <g class="sweat">
+            <rect x="56" y="12" width="2" height="3" fill="#7cc7ff" />
+            <rect x="57" y="11" width="1" height="1" fill="#7cc7ff" />
+          </g>
+        </g>
+
+        <!-- desk -->
+        <rect x="14" y="34" width="68" height="4" fill="#9b6337" />
+        <rect x="14" y="34" width="68" height="1" fill="#b77a48" />
+        <rect x="14" y="38" width="68" height="1" fill="#6e4423" />
+        <rect x="17" y="39" width="4" height="16" fill="#6e4423" />
+        <rect x="75" y="39" width="4" height="16" fill="#6e4423" />
+
+        <!-- hands typing -->
+        <g class="hands">
+          <rect x="35" y="31" width="4" height="3" fill="#ffd0a8" />
+          <rect x="57" y="31" width="4" height="3" fill="#ffd0a8" />
+        </g>
+
+        <!-- laptop (back of lid faces us) -->
+        <rect x="37" y="23" width="22" height="11" fill="#8b90a3" />
+        <rect x="38" y="24" width="20" height="10" fill="#d5d9e5" />
+        <rect x="38" y="24" width="20" height="1" fill="#eef0f6" />
+        <rect x="47" y="27" width="2" height="1" fill="#ff7aa0" />
+        <rect x="46" y="28" width="4" height="2" fill="#ff7aa0" />
+        <rect x="47" y="30" width="2" height="1" fill="#ff7aa0" />
+        <rect x="34" y="33" width="28" height="1" fill="#8b90a3" />
+
+        <!-- mug + steam -->
+        <rect x="23" y="29" width="5" height="5" fill="#fffdf6" />
+        <rect x="23" y="30" width="5" height="1" fill="#5b8cff" />
+        <rect x="28" y="30" width="1" height="3" fill="#fffdf6" />
+        <g class="steam" fill="#ffffff">
+          <rect x="24" y="25" width="1" height="2" /><rect x="26" y="23" width="1" height="2" />
+        </g>
+
+        <!-- paper stack -->
+        <rect x="65" y="32" width="10" height="2" fill="#fffdf6" />
+        <rect x="66" y="31" width="9" height="1" fill="#e9e2d0" />
+        <rect x="65" y="30" width="10" height="1" fill="#fffdf6" />
+      </svg>
+
+      <!-- ===== HUD ===== -->
+      <button id="inboxBtn" class="panel inbox-btn" aria-label="Open inbox">
+        <svg class="envelope" viewBox="0 0 16 12" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="0" y="0" width="16" height="12" fill="#2b2140" />
+          <rect x="1" y="1" width="14" height="10" fill="#fffdf6" />
+          <rect x="1" y="1" width="2" height="1" fill="#2b2140" /><rect x="13" y="1" width="2" height="1" fill="#2b2140" />
+          <rect x="3" y="2" width="2" height="1" fill="#2b2140" /><rect x="11" y="2" width="2" height="1" fill="#2b2140" />
+          <rect x="5" y="3" width="2" height="1" fill="#2b2140" /><rect x="9" y="3" width="2" height="1" fill="#2b2140" />
+          <rect x="7" y="4" width="2" height="1" fill="#2b2140" />
+        </svg>
+        <span class="inbox-text">
+          <b>INBOX</b>
+          <small id="inboxStatus">No mail</small>
+        </span>
+        <span id="badge" class="badge hidden">!</span>
+      </button>
+
+      <div class="top-right">
+        <div class="panel counter" id="counter">MAIL 0/0</div>
+        <button class="panel quit-btn" id="quitBtn">QUIT</button>
+      </div>
+
+      <div class="panel money" id="moneyPanel">
+        <small>COMPANY $</small>
+        <span id="money">$500</span>
+        <span id="moneyFloat" class="money-float"></span>
+      </div>
+
+      <!-- Email text box -->
+      <div id="dialog" class="bubble dialog hidden">
+        <div class="mail-head">
+          <div><b>FROM</b> <span id="mailFrom"></span></div>
+          <div><b>SUBJ</b> <span id="mailSubject"></span></div>
+        </div>
+        <p id="mailBody" class="mail-body"></p>
+        <span id="dialogHint" class="hint">CLICK ▼</span>
+      </div>
+
+      <!-- Trust / Don't trust -->
+      <div id="choices" class="bubble choices hidden">
+        <p>Trust this email?</p>
+        <button id="trustBtn" class="choice">YES, TRUST</button>
+        <button id="rejectBtn" class="choice">NO, REPORT</button>
+      </div>
+
+      <!-- Result / explanation -->
+      <div id="result" class="bubble result hidden">
+        <h2 id="resultTitle">NICE CATCH!</h2>
+        <div id="resultAmount" class="result-amount">+$100</div>
+        <p id="resultText"></p>
+        <span class="hint">CLICK TO CONTINUE ▼</span>
+      </div>
+
+      <!-- Title screen -->
+      <div id="titleScreen" class="overlay">
+        <div class="card">
+          <h2 class="big-title">INBOX<br /><span>INTERN</span></h2>
+          <p>Don't get phished. Don't get fired.</p>
+          <ul class="howto">
+            <li>📩 Click the INBOX when new mail arrives</li>
+            <li>📖 Read it, then click the text box</li>
+            <li>✅ TRUST real emails, 🚩 REPORT phishing</li>
+            <li>💸 Below $0 = you're fired!</li>
+          </ul>
+          <button id="startBtn" class="big-btn">▶ PRESS START</button>
+        </div>
+      </div>
+
+      <!-- Game over / shift complete -->
+      <div id="overScreen" class="overlay hidden">
+        <div class="card">
+          <h2 id="overTitle" class="big-title">YOU'RE<br /><span>FIRED!</span></h2>
+          <p id="overText"></p>
+          <button id="restartBtn" class="big-btn">▶ TRY AGAIN</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Handheld bottom bezel ===== -->
+    <footer class="console-bottom">
+      <div class="dpad"><i></i><i></i></div>
+      <p id="tip" class="tip">Tip: check the sender's address!</p>
+      <div class="ab"><span>B</span><span>A</span></div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
